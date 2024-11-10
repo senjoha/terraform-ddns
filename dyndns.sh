@@ -45,11 +45,6 @@ variable "ipv6" {
 }
 EOF
 
-# unset all variables
-unset $IPV6
-unset $v6prefix
-unset $IPV4
-
 # apply the new generated terraform config
 cd /home/senjoha/cloudflare-tf/
 echo "running terraform plan"
@@ -66,3 +61,11 @@ else
     echo "dns updated successfully."
     curl -d "dns updated successfully." https://ntfy.iede.senjoha.org/serverstatus
 fi
+
+# unset all variables
+unset $IPV6
+unset $v6prefix
+unset $IPV4
+unset $cf_check
+unset $hz_check
+unset $old_pwd
