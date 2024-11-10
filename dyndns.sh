@@ -24,12 +24,6 @@ echo $v6prefix
 IPV4=$(curl -s -4 https://api.ipify.org)
 echo $IPV4
 
-# check, if ip has changed, else exit
-if [ $(dig AAAA ntfy.iede.senjoha.org +short) == $v6prefix:be24:11ff:fe8b:3e6e ] || [ $(dig A ntfy.iede.senjoha.org +short) == $IPV4 ]; then
-    echo "exiting"
-    exit 0;
-fi
-
 # create variabls.tf file
 cat << EOF > variables.tf
 variable "ipv4" {
@@ -44,6 +38,12 @@ variable "ipv6" {
   description = "default ipv4 address of most services"
 }
 EOF
+
+# check, if ip has changed, else exit
+if [ cmp -s variables.tf /home/senjoha/terraform/cloudflare-tf/variables.tf ]; then
+    #echo "exiting"
+    exit 0;
+fi
 
 # apply the new generated terraform config
 old_pwd=$(pwd)
