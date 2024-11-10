@@ -46,12 +46,13 @@ variable "ipv6" {
 EOF
 
 # apply the new generated terraform config
-cd /home/senjoha/cloudflare-tf/
-echo "running terraform plan"
+
+cd /home/senjoha/terraform/cloudflare-tf/
 terraform plan
 echo "applying terraform"
 terraform apply -auto-approve
 cd $OLDPWD
+
 
 # check if apply was successful and notify
 if [ $? != 0 ]; then
