@@ -57,16 +57,22 @@ terraform plan
 echo "applying terraform on cloudflare"
 terraform apply -auto-approve
 
+# set cf_check var
+cf_check=$($?)
+
 cd /home/senjoha/terraform/cloudflare-tf/
 echo "running terraform plan on hetzner"
 terraform plan
 echo "applying terraform on hetzner"
 terraform apply -auto-approve
 
+# set hz_check var
+hz_check=$($?)
+
 cd $old_pwd
 
 # check if apply was successful and notify
-if [ $? != 0 ]; then
+if [ $cf_ckeck != 0 ] || [ $hz_ckeck != 0 ]; then
     echo "error, did not apply terraform dns update!"
     curl -d "error, did not apply terraform dns update!" https://ntfy.iede.senjoha.org/serverstatus
 else
