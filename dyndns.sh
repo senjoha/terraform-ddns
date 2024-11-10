@@ -46,13 +46,24 @@ variable "ipv6" {
 EOF
 
 # apply the new generated terraform config
+old_pwd=$(pwd)
+
+cp variables.tf /home/senjoha/terraform/hetzner-tf/
+cp variables.tf /home/senjoha/terrafrom/cloudflare-tf/
 
 cd /home/senjoha/terraform/cloudflare-tf/
+echo "running terraform plan on cloudflare"
 terraform plan
-echo "applying terraform"
+echo "applying terraform on cloudflare"
 terraform apply -auto-approve
-cd $OLDPWD
 
+cd /home/senjoha/terraform/cloudflare-tf/
+echo "running terraform plan on hetzner"
+terraform plan
+echo "applying terraform on hetzner"
+terraform apply -auto-approve
+
+cd $old_pwd
 
 # check if apply was successful and notify
 if [ $? != 0 ]; then
