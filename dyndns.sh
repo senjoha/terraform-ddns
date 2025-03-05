@@ -14,7 +14,7 @@ if ! ping -6 -c 1 ipv6.google.com 1> /dev/null; then
 fi
 
 # get our ipv6 address from ipify.org
-IPV6=$(curl -s -6 https://api64.ipify.org)
+IPV6=$(curl -s -6 https://api6.ipify.org)
 
 # extract the /64 bit network prefix from answer
 v6prefix=$(echo $IPV6 | sed 's/^\(.\{19\}\).*/\1/')
