@@ -53,7 +53,7 @@ cp variables.tf /home/senjoha/terrafrom/cloudflare-tf/
 
 cd /home/senjoha/terraform/cloudflare-tf/
 echo "running terraform plan on cloudflare"
-terraform plan
+#terraform plan
 echo "applying terraform on cloudflare"
 terraform apply -auto-approve
 
@@ -62,7 +62,7 @@ cf_check=$($?)
 
 cd /home/senjoha/terraform/cloudflare-tf/
 echo "running terraform plan on hetzner"
-terraform plan
+#terraform plan
 echo "applying terraform on hetzner"
 terraform apply -auto-approve
 
