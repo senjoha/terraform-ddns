@@ -1,4 +1,5 @@
 #!/bin/bash
+exec > /home/senjoha/.log/$(date +%s).log 2>&1
 # check if we can ping google with ipv6, else break
 if ! ping -6 -c 1 ipv6.google.com 1> /dev/null; then
   echo "ipv6 ping failed."
