@@ -26,7 +26,7 @@ echo $IPV4
 
 # check, if ip has changed, else exit
 if [ $(dig AAAA ntfy.iede.senjoha.org +short) == $v6prefix:be24:11ff:fe8b:3e6e ] || [ $(dig A ntfy.iede.senjoha.org +short) == $IPV4 ]; then
-    echo "exiting"
+    echo "exiting, since nothing changed."
     exit 0;
 fi
 
