@@ -41,7 +41,7 @@ variable "ipv4" {
 variable "ipv6" {
   type = string
   default = "$v6prefix"
-  description = "default ipv4 address of most services"
+  description = "default ipv6 prefix of most services"
 }
 EOF
 

@@ -7,5 +7,5 @@ variable "ipv4" {
 variable "ipv6" {
   type = string
   default = "2a02:8109:8a8f:3100"
-  description = "default ipv4 address of most services"
+  description = "default ipv6 prefix of most services"
 }
