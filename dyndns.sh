@@ -60,7 +60,7 @@ terraform apply -auto-approve
 # set cf_check var
 cf_check=$($?)
 
-cd /home/senjoha/terraform/cloudflare-tf/
+cd /home/senjoha/terraform/hetzner-tf/
 echo "running terraform plan on hetzner"
 #terraform plan
 echo "applying terraform on hetzner"
